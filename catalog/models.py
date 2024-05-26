@@ -19,9 +19,8 @@ class Product(models.Model):
     category_name = models.ForeignKey(Category, on_delete=models.SET_NULL, verbose_name='категория', null=True, blank=True, related_name='products')
     image = models.ImageField(upload_to='product/photo',verbose_name='превью', null=True, blank=True)
     price = models.IntegerField(verbose_name='цена')
-    created_at = models.DateField(verbose_name='дата создания')
-    updated_at = models.DateField(verbose_name='дата изменения')
-    manufactured_at = models.DateField(verbose_name='дата изготовления', null=True, blank=True)
+    created_at = models.DateField(verbose_name='дата создания', null=True, blank=True)
+    updated_at = models.DateField(verbose_name='дата изменения', null=True, blank=True)
 
     def __str__(self):
         return f'{self.category_name} {self.title}'

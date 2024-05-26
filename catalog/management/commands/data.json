@@ -1,0 +1,44 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "title": "фрукты",
+      "description": "вкусные и полезные"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "title": "овощи",
+      "description": "тоже полезные"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "title": "банан",
+      "description": "жёлтый",
+      "category_name": 1,
+      "image": "",
+      "price": 78,
+      "created_at": "2024-05-25",
+      "updated_at": "2024-05-25"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "title": "огурец",
+      "description": "зелёный",
+      "category_name": 2,
+      "image": "",
+      "price": 80,
+      "created_at": "2024-05-25",
+      "updated_at": "2024-05-25"
+    }
+  }
+]
