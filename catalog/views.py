@@ -1,9 +1,32 @@
 from django.shortcuts import render
 
+from catalog.models import Product
+
 
 def home(request):
-    return render(request, 'home.html')
+    product_list = Product.objects.all()
+    context = {
+        'object_list': product_list,
+        'title': 'Главная'
+    }
+    return render(request, 'home.html', context)
 
 
 def contacts(request):
-    return render(request, 'contacts.html')
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    message = request.POST.get('message')
+
+    context = {
+        'title': 'Контакты'
+    }
+
+    return render(request, 'contacts.html', context)
+
+
+def products(request, pk):
+    product = Product.objects.get(pk=pk)
+    context = {
+        'product': product
+    }
+    return render(request, 'products.html', context)
