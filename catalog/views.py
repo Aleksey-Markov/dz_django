@@ -9,8 +9,11 @@ def base(request):
 
 def home(request):
     product_list = Product.objects.all()
+    for product in product_list:
+        short = product.description[0:100]
     context = {
         'object_list': product_list,
+        'short_description': short,
         'title': 'Главная'
     }
     return render(request, 'home.html', context)
