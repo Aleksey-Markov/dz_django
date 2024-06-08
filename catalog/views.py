@@ -16,7 +16,7 @@ def home(request):
         'short_description': short,
         'title': 'Главная'
     }
-    return render(request, 'home.html', context)
+    return render(request, 'catalog/home.html', context)
 
 
 def contacts(request):
@@ -28,7 +28,7 @@ def contacts(request):
         'title': 'Контакты'
     }
 
-    return render(request, 'contacts.html', context)
+    return render(request, 'catalog/contacts.html', context)
 
 
 def products(request, pk):
@@ -38,4 +38,4 @@ def products(request, pk):
         'short_description': product.description[0:100],
         'title': product.title.capitalize
     }
-    return render(request, 'products.html', context)
+    return render(request, 'catalog/products.html', context)
