@@ -1,41 +1,30 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView, TemplateView
 
 from catalog.models import Product
 
 
-def base(request):
-    return render(request, 'base.html')
+class ProductListView(ListView):
+    Model = Product
+
+    def get_queryset(self):
+        return Product.objects.order_by('id')
 
 
-def home(request):
-    product_list = Product.objects.all()
-    for product in product_list:
-        short = product.description[0:100]
-    context = {
-        'object_list': product_list,
-        'short_description': short,
-        'title': 'Главная'
-    }
-    return render(request, 'catalog/home.html', context)
+class ContactsView(TemplateView):
+    template_name = 'catalog/contacts.html'
+
+# def contacts(request):
+#     name = request.POST.get('name')
+#     email = request.POST.get('email')
+#     message = request.POST.get('message')
+#
+#     context = {
+#         'title': 'Контакты'
+#     }
+#
+#     return render(request, 'catalog/contacts.html', context)
 
 
-def contacts(request):
-    name = request.POST.get('name')
-    email = request.POST.get('email')
-    message = request.POST.get('message')
-
-    context = {
-        'title': 'Контакты'
-    }
-
-    return render(request, 'catalog/contacts.html', context)
-
-
-def products(request, pk):
-    product = Product.objects.get(pk=pk)
-    context = {
-        'product': product,
-        'short_description': product.description[0:100],
-        'title': product.title.capitalize
-    }
-    return render(request, 'catalog/products.html', context)
+class ProductDetailView(DetailView):
+    model = Product
