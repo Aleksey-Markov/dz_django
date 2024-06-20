@@ -14,17 +14,6 @@ class ProductListView(ListView):
 class ContactsView(TemplateView):
     template_name = 'catalog/contacts.html'
 
-# def contacts(request):
-#     name = request.POST.get('name')
-#     email = request.POST.get('email')
-#     message = request.POST.get('message')
-#
-#     context = {
-#         'title': 'Контакты'
-#     }
-#
-#     return render(request, 'catalog/contacts.html', context)
-
 
 class ProductDetailView(DetailView):
     model = Product
