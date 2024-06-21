@@ -7,10 +7,10 @@
         <h1 class="jumbotron-heading"> {{ object.title.capitalize }} </h1>
     </div>
 </section>
-<div class="album py-5 bg-light text-center">
+<div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card mb-4 box-shadow">
                     <img src="{{ product.image | img }}">
                     <div class="card-body">
@@ -20,7 +20,7 @@
                         <p class="card-text">Описание: {{ object.description }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="{% url 'catalog:home' %}" class="btn">Назад</a>
+                                <a href="{% url 'catalog:home' %}" class="btn btn-warning">Назад</a>
                             </div>
                         </div>
                     </div>

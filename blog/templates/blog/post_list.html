@@ -36,13 +36,14 @@
                     <a class="btn btn-outline-primary" href="{% url 'blog:create' %}">Добавить пост</a>
                 </div>
                 {% for object in object_list %}
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
                             <h2> {{ object.title }} </h2>
-                            <div class="btn-group">
-                                <a href="{% url 'blog:post' object.pk %}" class="btn">Просмотреть</a>
-                                <a href="{% url 'blog:update' object.pk %}" class="btn">Редактировать</a>
+                            <div class="btn-group-center">
+                                <a href="{% url 'blog:post' object.pk %}" class="btn btn-primary">Просмотреть</a>
+                                <a href="{% url 'blog:update' object.pk %}" class="btn btn-warning">Редактировать</a>
+                                <a href="{% url 'blog:delete' object.pk %}" class="btn btn-danger">Удалить</a>
                             </div>
                         </div>
                     </div>
