@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 mb-5">
-                    <a class="btn btn-outline-primary" href="{% url 'blog:create' %}">Добавить пост</a>
+                    <a class="btn btn-outline-primary" href="{% url 'blog:create_post' %}">Добавить пост</a>
                 </div>
                 {% for object in object_list %}
                 <div class="col-md-6">
@@ -42,8 +42,8 @@
                             <h2> {{ object.title }} </h2>
                             <div class="btn-group-center">
                                 <a href="{% url 'blog:post' object.pk %}" class="btn btn-primary">Просмотреть</a>
-                                <a href="{% url 'blog:update' object.pk %}" class="btn btn-warning">Редактировать</a>
-                                <a href="{% url 'blog:delete' object.pk %}" class="btn btn-danger">Удалить</a>
+                                <a href="{% url 'blog:update_post' object.pk %}" class="btn btn-warning">Редактировать</a>
+                                <a href="{% url 'blog:delete_post' object.pk %}" class="btn btn-danger">Удалить</a>
                             </div>
                         </div>
                     </div>
