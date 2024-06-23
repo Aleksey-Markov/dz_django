@@ -1,0 +1,28 @@
+{% extends 'catalog/product_list.html' %}
+{% load tags %}
+{% block content %}
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-title">
+                        Удаление
+                    </div>
+                    <img src="{{ product.image | img }}">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <p>Вы хотите удалить "{{ object.title }}"?</p>
+                            <button type="submit" class="btn btn-danger">Удалить</button>
+                            <div class="btn btn-warning">
+                                <a href="{% url 'catalog:home' %}">Отмена</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

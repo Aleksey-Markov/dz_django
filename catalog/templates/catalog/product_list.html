@@ -9,17 +9,31 @@
     </section>
 
     <div class="album py-5 bg-light">
+        <a href="{% url 'catalog:create' %}" class="btn btn-primary form-control">Добавить продукт</a>
         <div class="container">
             <div class="row">
                 {% for object in object_list %}
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
                             <p class="card-text">{{ object.title.capitalize }}</p>
                             <p class="card-text">{{ short_description }}</p>
+                            {% if object.versions.all %}
+                            {% for version in object.versions.all %}
+                                {% if version.is_active_version %}
+                                <p class="card-text">Версия: {{ version.version_name }}-{{ version.num_of_version }}</p>
+                                {% else %}
+                                <p class="card-text">Нет текущей версии</p>
+                                {% endif %}
+                            {% endfor %}
+                            {% else %}
+                            <p class="card-text">Нет текущей версии</p>
+                            {% endif %}
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="{% url 'catalog:products' object.pk %}" class="btn btn-primary">Подробнее</a>
+                                    <a href="{% url 'catalog:products' object.pk %}" class="btn btn-success">Подробнее</a>
+                                    <a href="{% url 'catalog:update' object.pk %}" class="btn btn-warning">Изменить</a>
+                                    <a href="{% url 'catalog:delete' object.pk %}" class="btn btn-danger">Удалить</a>
                                 </div>
                             </div>
                         </div>
