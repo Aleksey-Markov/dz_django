@@ -27,7 +27,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(CreateView):
     model = Post
-    fields = ('title', 'content', 'preview', 'created_at', 'is_published')
+    fields = ('title', 'content', 'preview', 'is_published')
     success_url = reverse_lazy('blog:posts')
 
     def form_valid(self, form):
@@ -41,7 +41,7 @@ class PostCreateView(CreateView):
 
 class PostUpdateView(UpdateView):
     model = Post
-    fields = ('title', 'content', 'preview', 'created_at', 'is_published')
+    fields = ('title', 'content', 'preview', 'is_published')
 
     def get_success_url(self):
         return reverse('blog:post', args=[self.kwargs.get('pk')])
