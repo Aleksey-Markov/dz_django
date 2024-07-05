@@ -9,7 +9,9 @@
     </section>
 
     <div class="album py-5 bg-light">
-        <a href="{% url 'catalog:create' %}" class="btn btn-primary form-control">Добавить продукт</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'catalog:create' %}" class="btn btn-primary form-control">Добавить продукт</a>
+        {% endif %}
         <div class="container">
             <div class="row">
                 {% for object in object_list %}
