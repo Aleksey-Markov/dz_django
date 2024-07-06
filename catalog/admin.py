@@ -6,7 +6,7 @@ from blog.models import Post
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'category_name', 'title', 'price',)
+    list_display = ('id', 'category_name', 'title', 'price', 'owner')
     list_filter = ('category_name',)
     search_fields = ('title', 'description',)
 

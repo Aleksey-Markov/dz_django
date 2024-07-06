@@ -25,6 +25,7 @@ class Product(models.Model):
     created_at = models.DateField(verbose_name='дата создания', null=True, blank=True)
     updated_at = models.DateField(verbose_name='дата изменения', null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name='Владелец', null=True, blank=True)
+    is_published = models.BooleanField(verbose_name='публикация продукта', default=False)
 
     def __str__(self):
         return (
@@ -33,6 +34,9 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
+        permissions = [
+            ('can_published_product', 'Может публиковать продукт',)
+        ]
 
 
 class Version(models.Model):
