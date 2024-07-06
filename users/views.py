@@ -58,14 +58,14 @@ class PasswordResetView(View):
             user.set_password(password)
             user.save()
             send_mail(
-            subject="Новый пароль.",
-            message=f"Ваш новый пароль: {password}",
-            from_email=EMAIL_HOST_USER,
-            recipient_list=[user.email],
+                subject="Новый пароль.",
+                message=f"Ваш новый пароль: {password}",
+                from_email=EMAIL_HOST_USER,
+                recipient_list=[user.email],
             )
             return render(request, 'users/password_reset_done.html')
         except User.DoesNotExist:
-            return render(request, 'users/password_reset.html', {'error':'Пользователь с таким email не найден!'})
+            return render(request, 'users/password_reset.html', {'error': 'Пользователь с таким email не найден!'})
 
 
 def email_verification(request, token):
@@ -73,6 +73,3 @@ def email_verification(request, token):
     user.is_active = True
     user.save()
     return redirect(reverse('users:login'))
-
-
-

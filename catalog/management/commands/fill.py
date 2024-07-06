@@ -16,7 +16,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         Product.objects.all().delete()
         Category.objects.all().delete()
-
         product_for_create = []
         category_for_create = []
 
@@ -30,9 +29,12 @@ class Command(BaseCommand):
         for product in Command.json_read():
             if product['model'] == 'catalog.product':
                 product_for_create.append(Product(title=product['fields']['title'],
-                    description=product['fields']['description'],
-                    category_name=Category.objects.get(pk=product['fields']['category_name'],
-                    image=product['fields']['image'], price=product['fields']['price'],
-                    created_at=product['fields']['created_at'], updated_at=product['fields']['updated_at'])))
+                                                  description=product['fields']['description'],
+                                                  category_name=Category.objects.get(
+                                                      pk=product['fields']['category_name'],
+                                                      image=product['fields']['image'],
+                                                      price=product['fields']['price'],
+                                                      created_at=product['fields']['created_at'],
+                                                      updated_at=product['fields']['updated_at'])))
 
         Product.objects.bulk_create(product_for_create)

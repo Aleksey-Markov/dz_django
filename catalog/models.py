@@ -18,7 +18,8 @@ class Category(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=100, verbose_name='название продукта')
     description = models.TextField(verbose_name='описание')
-    category_name = models.ForeignKey(Category, on_delete=models.SET_NULL, verbose_name='категория', null=True, blank=True, related_name='products')
+    category_name = models.ForeignKey(Category, on_delete=models.SET_NULL, verbose_name='категория', null=True,
+                                      blank=True, related_name='products')
     image = models.ImageField(upload_to='product/photo', verbose_name='фото', null=True, blank=True)
     price = models.IntegerField(verbose_name='цена')
     created_at = models.DateField(verbose_name='дата создания', null=True, blank=True)
@@ -26,7 +27,8 @@ class Product(models.Model):
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name='Владелец', null=True, blank=True)
 
     def __str__(self):
-        return (f'Категория: {self.category_name}, наименование: {self.title}, цена: {self.price}руб., описание: {self.description}.')
+        return (
+            f'Категория: {self.category_name}, наименование: {self.title}, цена: {self.price}руб.')
 
     class Meta:
         verbose_name = 'продукт'
@@ -34,7 +36,8 @@ class Product(models.Model):
 
 
 class Version(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True, verbose_name='продукт', related_name='versions')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True, verbose_name='продукт',
+                                related_name='versions')
     num_of_version = models.IntegerField(verbose_name='номер версии')
     version_name = models.CharField(max_length=150, verbose_name='название версии')
     is_active_version = models.BooleanField(default=True, verbose_name='теущая версия')
@@ -45,4 +48,3 @@ class Version(models.Model):
     class Meta:
         verbose_name = 'версия'
         verbose_name_plural = 'версии'
-
