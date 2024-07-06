@@ -17,6 +17,7 @@ pytils = "^0.4.1"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.0"
+redis = "^5.0.7"
 
 [build-system]
 requires = ["poetry-core"]
