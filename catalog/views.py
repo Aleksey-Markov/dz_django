@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView, TemplateView, CreateView,
 
 from catalog.forms import ProductForm, VersionForm, ProductModeratorForm
 from catalog.models import Product, Version
+from catalog.services import get_categories
 
 
 class ProductListView(ListView):
@@ -26,6 +27,11 @@ class ContactsView(TemplateView):
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['category'] = get_categories(self.object.pk)
+        return context_data
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
